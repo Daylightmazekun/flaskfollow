@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//app/admin_manager/forms.py=utf-8
+encoding//app/admin_manager/views.py=utf-8
 encoding//app/auth/__init__.py=utf-8
 encoding//app/auth/forms.py=utf-8
 encoding//app/decorators.py=utf-8
