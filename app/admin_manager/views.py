@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from flask.helpers import flash
+from flask import redirect
+from flask.helpers import flash, url_for
 from flask.templating import render_template
 from flask_login import login_required
 
