@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-from flask import redirect
-from flask.helpers import flash, url_for
-from flask.templating import render_template
+from flask import flash, redirect, url_for, render_template, request, current_app
 from flask_login import login_required
 
-from app import admin_manager
-from app.admin_manager.forms import EditProfileAdminForm
 from app.decorators import admin_required, permission_required
-from app.models.account import User, Role
+from . import admin_manager
+from .forms import EditProfileAdminForm, CategoryForm
+from app.models.account import User, Role, Permission
+from app.models.post import Comment, Category, Post, Tag
 
 
 @admin_manager.route('/new/profile', methods = ['GET', 'POST'])
