@@ -41,3 +41,28 @@ def secret():
 @login_required(basis=True)
 def api():
     return jsonify(data='You are logged in with basic auth')
+
+
+def be_admin(username):
+    """
+    Validator : all users approved, return None
+    """
+    return
+
+@app('/complex')
+@login_required(must=[be_admin, have_approval])
+def complexview():
+    return render_templete('secret.html')
+
+
+class ProtectedView(MethodView):
+    decorators = [login_required]
+
+    def get(self):
+        return "You are logged in as <b>{0}</b>".format(get_username())
+        
+
+app.add_url_rule('/protected', view_func=ProtectedView.as_view('protected'))
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, use_reloader=True, debug=False)
