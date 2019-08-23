@@ -49,7 +49,9 @@ def be_admin(username):
 
 
 def have_approval(username):
-    """Validator: all users approved, return None"""
+    """
+    Validator: all users approved, return None
+    """
     return
 
 @app.route('/complex')
