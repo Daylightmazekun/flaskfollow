@@ -1,7 +1,7 @@
 import json
 import os
-from fuctools import wraps
 
+from functools import wraps
 import click
 from flask import Flask, jsonify, render_template
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -11,7 +11,7 @@ def vilidate_login(user):
     if not db_user.get(user(['username'])):
         return False
     stored_password = db_users[user['username']]['password']
-    if check_password_hash(stored_password, user['password'])
+    if check_password_hash(stored_password, user['password']):
         return True
     return False
 
@@ -41,7 +41,7 @@ def create_app():
 
 def configure_extensions(app):
     SimpleLogin(app, login_checker=validate_login)
-    if not os.path.exists('user.json')
+    if not os.path.exists('user.json'):
         with open('user,json', 'a') as json_file:
             json.dump({'username':'', 'password': ''}, json_file)
 
