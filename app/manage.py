@@ -8,7 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 def vilidate_login(user):
     db_user = json.load(open('user.json'))
-    if not db_user.get(user(['username']));
+    if not db_user.get(user(['username'])):
         return False
     stored_password = db_users[user['username']]['password']
     if check_password_hash(stored_password, user['password'])
