@@ -1,4 +1,4 @@
-import app
+import db from app.app
 
 class Words(db.Document):
     word_id = db.IntField(required = True)
