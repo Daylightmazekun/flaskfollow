@@ -2,10 +2,15 @@ import sys
 sys.path.append("..")
 from mongoconfig import db 
 class Words(db.Document):
-    word_id = db.IntField(required = True)
-    word = db.StringField()
+    # word_id = db.IntField(required = True)
+    word = db.StringField(required = True)
+    hiragana = db.StringField()
     honnyaku = db.StringField()
-    word_note = db.StringField()
+
+class Grammer(db.Document):
+    grammer_id = db.IntField(required = True)
+    grammer = db.StringField(required = True)
+    example = db.StringField()
 
 class User(db.Document):
     user_id = db.IntField(required = True)

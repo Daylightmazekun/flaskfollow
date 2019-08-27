@@ -2,4 +2,5 @@
 
 .vscode
 /app/__pycache__
+/app/model/__pycache__
 pyc#
