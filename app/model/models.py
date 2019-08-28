@@ -8,7 +8,7 @@ class Words(db.Document):
     honnyaku = db.StringField()
 
 class Grammer(db.Document):
-    grammer_id = db.IntField(required = True)
+    # grammer_id = db.IntField(required = True)
     grammer = db.StringField(required = True)
     example = db.StringField()
 
