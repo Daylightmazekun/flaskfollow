@@ -30,6 +30,11 @@ SimpleLogin(app,  login_checker=check_my_user)
 def index():
     return render_template('index.html')
 
+# register
+@app.route('/register', form=form)
+def register():
+    return render_template('register.html')
+
 @app.route('/secret')
 @login_required(username = ['zekun_ma', 'mary'])
 def secret():

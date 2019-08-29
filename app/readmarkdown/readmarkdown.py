@@ -41,14 +41,17 @@ def read_grammer(grammer_path):
     for line in f.readlines():
         if line.strip().startswith('*'):
             if mark != 0 :
-                grammer.grammer = grammer_str
-                grammer.exaple = grammer_example
+                #grammer.grammer = grammer_str
+                #grammer.exaple = grammer_example
+                grammer = Grammer(grammer=grammer_str, example = grammer_example)
                 grammer.save()
                 grammer_str, grammer_example = '', ''
             grammer_str = line.strip().strip('*')
             mark += 1
         if line.strip().startswith('>'):
             grammer_example = grammer_example + line.strip().strip('>') + '\n'
+    # last commit.
+    grammer = Grammer(grammer=grammer_str, example = grammer_example)
     grammer.save()
     f.close()
 if __name__ == '__main__':
