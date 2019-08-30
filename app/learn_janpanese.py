@@ -1,12 +1,10 @@
-from flask import Flask, jsonify, render_template 
+from flask import Flask, jsonify, render_template, request 
 from flask.views import MethodView
 from flask_simplelogin import SimpleLogin, get_username, login_required
+from model import forms
 
 my_user = {
-    'zekun_ma' : {'password': 'norris', 'roles': ['admin']},
-    'lee' : {'password': 'duglas', 'roles':[]},
-    'mary' : {'password':'12345', 'roles':[]},
-    'steven':{'password':'3333', 'roles':[]}
+    'zekun_ma' : {'password': 'norris', 'roles': ['admin']}
 }
 
 
@@ -31,9 +29,21 @@ def index():
     return render_template('index.html')
 
 # register
-@app.route('/register', form=form)
+@app.route('/register')
 def register():
-    return render_template('register.html')
+    registerForm = forms.RegisterForm(request.form)
+    templateData = {
+        'form' : registerForm
+    }
+    return render_template('register.html', **templateData)
+
+# register validate
+@app.route('/validateregorlogin')
+def validateregorlogin():
+    return None
+
+
+
 
 @app.route('/secret')
 @login_required(username = ['zekun_ma', 'mary'])

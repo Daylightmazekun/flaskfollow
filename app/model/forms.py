@@ -1,9 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField
+from wtforms import PasswordField, StringField, validators
 from wtforms.validators import DataRequired
-from flask_mongoengine import validators
 
-class RegisterForm(FlaskFrom):
+class RegisterForm(FlaskForm):
     '''
     Default register form
     '''

@@ -56,4 +56,4 @@ def read_grammer(grammer_path):
     f.close()
 if __name__ == '__main__':
     # read_markdown('n2言葉.md')
-    read_grammer('n2文法.md')
+    # read_grammer('n2文法.md')
