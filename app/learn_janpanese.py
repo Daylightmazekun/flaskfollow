@@ -1,23 +1,16 @@
 from flask import Flask, jsonify, render_template, request 
 from flask.views import MethodView
 from flask_simplelogin import SimpleLogin, get_username, login_required
-from model import forms
-
-my_user = {
-    'zekun_ma' : {'password': 'norris', 'roles': ['admin']}
-}
-
+from model import forms,models
 
 def check_my_user(user):
     """
     Check if user exists and its credential.
     """
-    user_data = my_user.get(user['username'])
-    if not user_data:
+    user_check_exist = User.object(username = user['username'])
+    if not user_check_exist:
         return False
-    elif user_data.get('password') == user['password']:
-        return True
-    return False
+    return True
     
 
 app = Flask(__name__)
@@ -29,20 +22,20 @@ def index():
     return render_template('index.html')
 
 # register
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    registerForm = forms.RegisterForm(request.form)
-    templateData = {
-        'form' : registerForm
-    }
-    return render_template('register.html', **templateData)
+    if request.method == 'POST':
+        user_name = request.form['username']
+    #registerForm = forms.RegisterForm(request.form)
+    #templateData = {
+    #    'form' : registerForm
+    #}
+    return render_template('register.html', form=forms.RegisterForm())
 
 # register validate
-@app.route('/validateregorlogin')
-def validateregorlogin():
-    return None
-
-
+#@app.route('/validateregorlogin')
+#def validateregorlogin():
+#    return None
 
 
 @app.route('/secret')

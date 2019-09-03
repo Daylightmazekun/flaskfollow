@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block page_body %}
-       <form action="{{ url_for('validateregorlogin') }}" method="post">
+       <form method="post">
             <div class="form-group">
             {{ form.csrf_token }}
             {{form.username.label}}<div class="form-control">{{ form.username }}</div><br>
